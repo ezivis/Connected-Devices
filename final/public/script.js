@@ -56,13 +56,11 @@ function openConnection() {
 }
 
 function closeConnection() {
-  // display the change of state:
   connectionSpan.innerHTML = "false";
   connectButton.value = "Connect";
 }
 
 function readIncomingMessage(event) {
-  // display the incoming message:
   incomingSpan.innerHTML = event.data;
   allvalue = event.data;
   console.log(allvalue);
@@ -72,13 +70,11 @@ function readIncomingMessage(event) {
 }
 
 function sendMessage() {
-  //if the socket's open, send a message:
   if (socket.readyState === WebSocket.OPEN) {
     socket.send(outgoingText.value);
   }
 }
 
-// add a listener for the page to load:
 window.addEventListener('load', setup);
 
 
@@ -104,9 +100,6 @@ return this
 }
 
 function PickRandomWord(frm) {
-// Generate a random number between 1 and NumberOfWords
 var rnd = Math.ceil(Math.random() * NumberOfWords)
-
-// Display the word inside the text box
 incomingSpan.innerHTML = "I'm so" + " " +  words[rnd]
 }
