@@ -8,7 +8,8 @@
   by Tom Igoe
 */
 // get the server URL from the window.location:
-// change 'wss' to 'ws' for running without SSL):
+// change 'wss' to 'ws' for running without SSL):\
+
 let serverURL = 'ws://' + window.location.host;
 // the webSocket connection:
 let socket;
@@ -17,6 +18,8 @@ let incomingSpan;
 let outgoingText;
 let connectionSpan;
 let connectButton;
+let allvalue;
+let myImage;
 
 function setup() {
   // get all the DOM elements that need listeners:
@@ -24,6 +27,7 @@ function setup() {
   outgoingText = document.getElementById('outgoing');
   connectionSpan = document.getElementById('connection');
   connectButton = document.getElementById('connectButton');
+  myImage = document.getElementById("mainImage");
   // set the listeners:
   outgoingText.addEventListener('change', sendMessage);
   connectButton.addEventListener('click', changeConnection);
@@ -56,11 +60,13 @@ function openConnection() {
 }
 
 function closeConnection() {
+  // display the change of state:
   connectionSpan.innerHTML = "false";
   connectButton.value = "Connect";
 }
 
 function readIncomingMessage(event) {
+  // display the incoming message:
   incomingSpan.innerHTML = event.data;
   allvalue = event.data;
   console.log(allvalue);
@@ -70,11 +76,13 @@ function readIncomingMessage(event) {
 }
 
 function sendMessage() {
+  //if the socket's open, send a message:
   if (socket.readyState === WebSocket.OPEN) {
     socket.send(outgoingText.value);
   }
 }
 
+// add a listener for the page to load:
 window.addEventListener('load', setup);
 
 
@@ -101,5 +109,34 @@ return this
 
 function PickRandomWord(frm) {
 var rnd = Math.ceil(Math.random() * NumberOfWords)
-incomingSpan.innerHTML = "I'm so" + " " +  words[rnd]
+incomingSpan.innerHTML = "I'm so" + " " +  words[rnd] + " " + allvalue
 }
+
+
+
+const imageArray = ["/img/1.jpg","/img/2.jpg","/img/3.jpg",
+  "/img/4.jpg","/img/5.jpg"];
+
+var imageIndex = 0; 
+function changeImage() {
+  // myImage.setAttribute("src",imageArray[imageIndex]);
+  document.body.style.backgroundImage ="url"+"(" +imageArray[imageIndex] + ")"
+  document.body.style.backgroundSize = "cover";
+  imageIndex = (imageIndex + 1) % imageArray.length;
+  console.log(imageArray[imageIndex]);
+  console.log(stoptime);
+}
+
+function setInterval_function() {
+  length = imageArray.length;
+  stoptime = length*1000;
+  setInterval_ID = setInterval(changeImage, 1000);
+  setTimeout(stop_interval, stoptime);
+}
+
+
+  function stop_interval()
+  {
+    clearInterval(setInterval_ID);
+    console.log("stop!!")
+  }
