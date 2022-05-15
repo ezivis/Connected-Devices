@@ -1,21 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+  <title>Generate Images With Sensors And Gans</title>
 </head>
+
 <body>
-  <div class="container">
-        <H1>Bedroom</H1>
-        <span id="connection">false</span><br>
-        <input type="button" id="connectButton" value="Connect"><br>
-        <input type="text" id="outgoing" style= "display: none;"><br>
-        <span id="incoming"></span><br>
-        <p id = "playback" onclick="setInterval_function()">see what the sensor has been dreaming  ▷</span>
+
+  <input type="button" id="connectButton" value="Connect"><br>
+
+    <span id="connection" style="display: none;">false</span><br>
+    <input type="text" id="outgoing" style="display: none;"><br>
+
+
+<p id = "Sensorscontrol">Sensors Control</p>
+<span id='ct5'></span>
+<div id="ipget"></div>
+
+<div class = "lightsection">
+  <div id = "lightcoverblack"></div>
+  <div id = "lightcoverwhite"></div>
+    <p id = "lighttext">Light Sensor</p>
+    <img id="lightlogo" src="img/2.png" alt="lightlogo">
+    <img id="waitdata" src="img/1.png" alt="Italian Trulli">
+    <p id="waitdatatext">Wating For The Data</p>
+    <p id="livedata"></p>
+    <img src="img/3.png" id = "disconnectButtonlight"  alt="submit" />
+    <img src="img/4.png" id = "connectButtonlight" alt="submit" />
+       <div class="video-container">
+        <video autoplay muted loop id="myVideo">
+        </video>
       </div>
+</div>
+<span id="incominglight"></span><br>
+
+
+<div class = "tempsection">
+  <div id = "tempcoverred"></div>
+  <div id = "tempcoverblue"></div>
+  <p id = "temptext">Temperature Sensor</p>
+  <img id="templogo" src="img/5.png" alt="lightlogo">
+  <img id="waitdata2" src="img/1.png" alt="Italian Trulli">
+  <p id="waitdatatext2">Wating For The Data</p>
+  <p id="livedata2"></p>
+  <img src="img/3.png" id = "disconnectButtontemp"  alt="submit" />
+  <img src="img/4.png" id = "connectButtontemp" alt="submit" />
+  <div class="video-container">
+    <video autoplay muted loop id="myVideo2">
+    </video>
+  </div>
+</div>
+<span id="incomingTemp"></span><br>
+
+<div class = "doorsection">
+  <p id = "doortext">Door Sensor</p>
+  <img id="doorlogo" src="img/6.png" alt="lightlogo">
+  <p id="livedata3">off</p>
+  <img src="img/3.png" id = "disconnectButtondoor"  alt="submit" />
+  <img src="img/4.png" id = "connectButtondoor" alt="submit" />
+  <div class="video-container">
+    <video autoplay muted loop id="myVideo3">
+    </video>
+  </div>
+</div>
+<span id="incomingDoor"></span><br>
+
+
+
+
+
+
+
 </body>
 <script src="script.js"></script>
+<script src="time.js"></script>
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
 </html>
